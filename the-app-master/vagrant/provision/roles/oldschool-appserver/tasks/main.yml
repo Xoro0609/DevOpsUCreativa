@@ -1,0 +1,22 @@
+- name: change ownership and access for tomcat7 log files
+  file:
+    path: /var/log/tomcat7/
+    mode: 0755
+    group: tomcat7
+    recurse: yes
+    state: directory
+
+- name: set logstash defaults
+  copy:
+    src: default
+    dest: /etc/default/logstash
+    force: yes
+    mode: 0644
+
+- name: set logstash configuration
+  copy:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d
+    force: yes
+    mode: 0644
+  notify: restart logstash

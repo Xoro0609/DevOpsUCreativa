@@ -1,4 +1,4 @@
 #!/bin/sh
 cd vagrant
-NUM_INSTANCES=3 vagrant halt
+NUM_INSTANCES=3 vagrant up
 cd ..
